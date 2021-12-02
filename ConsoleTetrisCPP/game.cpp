@@ -2,10 +2,10 @@
 #include <Windows.h>
 #include <iostream>
 #include <thread>
+#include <vector>
 game::game()
 {
 	gameplayLoop();
-	currentPiece = piece(position(1, 3), position(1, 2));
 }
 
 void setCursorPosition(int x, int y)
@@ -27,6 +27,7 @@ void game::gameplayLoop()
 	while (true)
 	{
 		setCursorPosition(0, 0);
+		currentPiece.moveBlock(board);
 		board.drawBoard();
 		std::this_thread::sleep_for(100ms);
 	}
