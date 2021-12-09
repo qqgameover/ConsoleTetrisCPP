@@ -20,7 +20,7 @@ void piece::moveBlock(board &gameBoards)
 }
 vector<vector<unsigned char>> piece::getRandomBlockMatrix()
 {
-	int num = rand() % 8 + 1;
+	int num = rand() % 7;
 	return { {2, 2}, {2, 2} };
 }
 
