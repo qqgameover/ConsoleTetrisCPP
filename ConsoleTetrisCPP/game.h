@@ -8,7 +8,7 @@ class game
 public:
 	board Board;
 	piece CurrentPiece;
-	colDetection ColDetection;
+	ColDetection ColDetection;
 	game();
 	void PieceLogic();
 	void GameplayLoop();

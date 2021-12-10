@@ -2,7 +2,6 @@
 #include <Windows.h>
 #include <iostream>
 #include <thread>
-#include <vector>
 #define WAITTIME 250ms
 
 game::game()
@@ -27,9 +26,13 @@ void game::PieceLogic()
 {
 	CurrentPiece.UnDrawBlock(Board);
 	CurrentPiece.MoveBlock(position(1, 0));
-	bool x = ColDetection.IsColliding(Board.LandedArray, CurrentPiece, position(1, 0));
+	bool hasCollided = ColDetection.IsColliding(Board.LandedArray, CurrentPiece, position(1, 0));
 	CurrentPiece.DrawBlock(Board);
-	if (x) CurrentPiece = piece();
+	if (hasCollided)
+	{
+		CurrentPiece = piece();
+		Board.LandedArray = Board.BoardArray;
+	}
 }
 
 [[noreturn]]void game::GameplayLoop()

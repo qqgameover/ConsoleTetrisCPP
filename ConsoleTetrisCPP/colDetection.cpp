@@ -1,6 +1,6 @@
 #include "colDetection.h"
 
-bool colDetection::IsColliding(std::vector<std::vector<unsigned char>>& landedArray, piece &piece, position dir)
+bool ColDetection::IsColliding(std::vector<std::vector<unsigned char>> &landedArray, piece &piece, position dir)
 {
 	const size_t height = piece.blockMatrix.size();
 	const size_t width = piece.blockMatrix[0].size();

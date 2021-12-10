@@ -29,10 +29,10 @@ board::board()
 }
 void board::DrawBoard()
 {
-	int height = BoardArray.size();
-	int width = BoardArray[0].size();
-	for (int yAxsis = 0; yAxsis < height; yAxsis++)
-	for (int xAxsis = 0; xAxsis < width; xAxsis++)
+	size_t height = BoardArray.size();
+	size_t width = BoardArray[0].size();
+	for (size_t yAxsis = 0; yAxsis < height; yAxsis++)
+	for (size_t xAxsis = 0; xAxsis < width; xAxsis++)
 	{
 		cout << (int)BoardArray[yAxsis][xAxsis] << " ";
 		if (xAxsis == width - 1) cout << "\n";
