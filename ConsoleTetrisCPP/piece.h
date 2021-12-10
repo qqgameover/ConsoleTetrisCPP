@@ -8,12 +8,13 @@ using namespace std;
 class piece
 {
 	vector<vector<unsigned char>> blockMatrix;
-	static vector<vector<unsigned char>> getRandomBlockMatrix();
+	static vector<vector<unsigned char>> GetRandomBlockMatrix();
 public:
-	position position_;
-	position direction_;
+	position *Position;
 	piece();
-	void moveBlock(board &gameBoards);
-	void rotateBlock(vector<vector<unsigned char>> &blockMatrix);
+	void MoveBlock(position dir);
+	void UnDrawBlock(board &gameBoards);
+	void DrawBlock(board &gameBoards);
+	void RotateBlock(vector<vector<unsigned char>> &blockMatrix);
 };
 

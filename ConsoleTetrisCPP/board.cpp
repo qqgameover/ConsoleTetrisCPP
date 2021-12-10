@@ -2,7 +2,7 @@
 #include <iostream>
 board::board() 
 {
-	BoardArray = {  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	BoardArray = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 					{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 					{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 					{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -24,10 +24,10 @@ board::board()
 					{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 					{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 					{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-					{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, };
+					{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 	copy(BoardArray.begin(), BoardArray.end(), back_inserter(LandedArray));
 }
-void board::drawBoard()
+void board::DrawBoard()
 {
 	int height = BoardArray.size();
 	int width = BoardArray[0].size();

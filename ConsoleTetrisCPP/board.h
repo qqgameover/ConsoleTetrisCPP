@@ -7,6 +7,6 @@ public:
 	vector<vector<unsigned char>> BoardArray;
 	vector<vector<unsigned char>> LandedArray;
 	board();
-	void drawBoard();
+	void DrawBoard();
 };
 

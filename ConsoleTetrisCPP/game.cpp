@@ -3,9 +3,11 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#define WAITTIME 250ms
+
 game::game()
 {
-	gameplayLoop();
+	GameplayLoop();
 }
 
 void setCursorPosition(int x, int y)
@@ -21,14 +23,21 @@ void set_cursor(bool visible) {
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
 }
 
-void game::gameplayLoop()
+void game::PieceLogic()
+{
+	currentPiece.UnDrawBlock(board);
+	currentPiece.MoveBlock(position(1, 0));
+	currentPiece.DrawBlock(board);
+}
+
+void game::GameplayLoop()
 {
 	set_cursor(false);
 	while (true)
 	{
 		setCursorPosition(0, 0);
-		currentPiece.moveBlock(board);
-		board.drawBoard();
-		std::this_thread::sleep_for(100ms);
+		PieceLogic();
+		board.DrawBoard();
+		std::this_thread::sleep_for(WAITTIME);
 	}
 }

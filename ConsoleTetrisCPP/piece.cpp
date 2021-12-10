@@ -1,28 +1,43 @@
 #include "piece.h"
+#include <iostream>
 #include <random>
 piece::piece()
 {
-	position_ = position(1, 5);
-	direction_ = position(1, 0);
-	blockMatrix = getRandomBlockMatrix();
+	Position = new position(0, 5);
+	blockMatrix = GetRandomBlockMatrix();
 }
 
-void piece::moveBlock(board &gameBoards)
+void piece::DrawBlock(board &gameBoards)
 {
-	const int height = blockMatrix.size();
-	const int width = blockMatrix[0].size();
-	for (int y_index = 0; y_index < height; y_index++)
-	for (int x_index = 0; x_index < width; x_index++)
+	const size_t height = blockMatrix.size();
+	const size_t width = blockMatrix[0].size();
+	for (size_t yIndex = 0; yIndex < height; yIndex++)
+	for (size_t xIndex = 0; xIndex < width; xIndex++)
 	{
-		if (blockMatrix[y_index][x_index] == 0) continue;
-		gameBoards.BoardArray[y_index + position_.y][x_index + position_.x] = blockMatrix[y_index][x_index];
+		if (blockMatrix[yIndex][xIndex] == 0) continue;
+		gameBoards.BoardArray[yIndex + Position->y][xIndex + Position->x] = blockMatrix[yIndex][xIndex];
 	}
 }
-vector<vector<unsigned char>> piece::getRandomBlockMatrix()
+void piece::UnDrawBlock(board &gameBoards)
+{
+	const size_t height = blockMatrix.size();
+	const size_t width = blockMatrix[0].size();
+	for (size_t yIndex = 0; yIndex < height; yIndex++)
+	for (size_t xIndex = 0; xIndex < width; xIndex++)
+	{
+		if (gameBoards.LandedArray[yIndex + Position->y][xIndex + Position->x] > 0) continue;
+		gameBoards.BoardArray[yIndex + Position->y][xIndex + Position->x] = 0;
+	}
+}
+
+void piece::MoveBlock(position dir)
+{
+	Position->y += dir.y;
+	Position->x += dir.x;
+}
+
+vector<vector<unsigned char>> piece::GetRandomBlockMatrix()
 {
 	int num = rand() % 7;
 	return { {2, 2}, {2, 2} };
 }
-
-
-

@@ -8,6 +8,7 @@ public:
 	board board;
 	piece currentPiece;
 	game();
-	void gameplayLoop();
+	void PieceLogic();
+	void GameplayLoop();
 };
 
