@@ -7,10 +7,10 @@ using namespace std;
 
 class piece
 {
-	vector<vector<unsigned char>> blockMatrix;
 	static vector<vector<unsigned char>> GetRandomBlockMatrix();
 public:
 	position *Position;
+	vector<vector<unsigned char>> blockMatrix;
 	piece();
 	void MoveBlock(position dir);
 	void UnDrawBlock(board &gameBoards);

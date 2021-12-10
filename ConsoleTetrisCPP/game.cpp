@@ -25,19 +25,21 @@ void set_cursor(bool visible) {
 
 void game::PieceLogic()
 {
-	currentPiece.UnDrawBlock(board);
-	currentPiece.MoveBlock(position(1, 0));
-	currentPiece.DrawBlock(board);
+	CurrentPiece.UnDrawBlock(Board);
+	CurrentPiece.MoveBlock(position(1, 0));
+	bool x = ColDetection.IsColliding(Board.LandedArray, CurrentPiece, position(1, 0));
+	CurrentPiece.DrawBlock(Board);
+	if (x) CurrentPiece = piece();
 }
 
-void game::GameplayLoop()
+[[noreturn]]void game::GameplayLoop()
 {
 	set_cursor(false);
 	while (true)
 	{
 		setCursorPosition(0, 0);
 		PieceLogic();
-		board.DrawBoard();
+		Board.DrawBoard();
 		std::this_thread::sleep_for(WAITTIME);
 	}
 }
