@@ -33,7 +33,7 @@ void piece::UnDrawBlock(board &gameBoards)
 
 void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> landedArray)
 {
-    if(IsHittingWall(landedArray, dir)) 
+    if(IsSidesColliding(landedArray, dir)) 
     {
         this -> Position = new position(Position->y + dir.y, Position->x);
         return;
@@ -41,7 +41,7 @@ void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> land
     this -> Position = new position(Position->y + dir.y, Position->x + dir.x);
 }
 
-bool piece::IsHittingWall(std::vector<vector<unsigned char>> landedArray, position dir) 
+bool piece::IsSidesColliding(std::vector<vector<unsigned char>> landedArray, position dir) 
 {
     const size_t height = this -> blockMatrix.size();
     const size_t width = this -> blockMatrix[0].size();
@@ -54,8 +54,32 @@ bool piece::IsHittingWall(std::vector<vector<unsigned char>> landedArray, positi
     return false;
 }
 
+void piece::RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix)
+{
+	const size_t height = outBlockMatrix.size();
+    const size_t width = outBlockMatrix[0].size();
+	size_t newRow = 0;
+	std::vector<std::vector<unsigned char>> tempVec(width, std::vector<unsigned char> (height));
+	for (int oldColumn = width - 1; oldColumn >= 0; oldColumn--)
+	{
+		size_t newColumn = 0;
+		for(size_t oldRow = 0; oldRow < height; oldRow++)
+		{
+			tempVec[newRow][newColumn] = outBlockMatrix[oldRow][oldColumn];
+			newColumn++;
+		}
+		newRow++;
+	}
+	outBlockMatrix = tempVec;
+}
+
 vector<vector<unsigned char>> piece::GetRandomBlockMatrix()
 {
-	int num = rand() % 7;
-	return { {2, 2}, {2, 2} };
+	int num = rand() % 3;
+	if(num == 1)
+	{
+		return { {2, 2}, {2, 2} };
+	}
+	return {  {0, 0, 0, 0},
+		        {3, 3, 3, 3} };
 }

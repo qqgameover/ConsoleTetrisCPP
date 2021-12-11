@@ -1,9 +1,10 @@
 #pragma once
 #include <conio.h>
 #include "position.h"
+#include "piece.h"
 class Controls
 {
     public:
-        position HandleInput();
+        position HandleInput(piece &p);
 };
 

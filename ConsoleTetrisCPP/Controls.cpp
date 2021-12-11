@@ -1,13 +1,14 @@
 #include "Controls.h"
 #include <iostream>
 
-position Controls::HandleInput() 
+position Controls::HandleInput(piece &p) 
 {
     if(_kbhit()) 
     {
         switch(_getch())
         {
             case 'w':
+                p.RotateBlock(p.blockMatrix);
                 return {1, 0};
             case 'r':
                 return {1, 0};
