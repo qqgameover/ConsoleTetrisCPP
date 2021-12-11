@@ -37,8 +37,8 @@ void board::DrawBoard()
 		if (BoardArray[yAxsis][xAxsis] == 0) std::cout << "\033[1;36m+\033[0m" << " ";
 		else
 		{
-			std::cout << "\033[1;" << colorarray[BoardArray[yAxsis][xAxsis] - 1] << "m" << (int)BoardArray[yAxsis][xAxsis] << "\033[0m" << " ";
-			//std::cout << (int)BoardArray[yAxsis][xAxsis] << " ";
+			std::cout << "\033[1;" << colorarray[BoardArray[yAxsis][xAxsis] - 1] << 
+				"m" << (int)BoardArray[yAxsis][xAxsis] << "\033[0m" << " ";
 		}
 		if (xAxsis == width - 1) std::cout << "\n";
 	}
