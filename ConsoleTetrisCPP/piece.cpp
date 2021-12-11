@@ -34,7 +34,7 @@ void piece::UnDrawBlock(board &gameBoards)
 
 void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> landedArray)
 {
-    if(IsSidesColliding(std::move(landedArray), dir)) 
+	if(IsSidesColliding(std::move(landedArray), dir)) 
     {
         this -> Position = new position(Position->y + dir.y, Position->x);
         return;
