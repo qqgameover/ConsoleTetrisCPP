@@ -58,7 +58,7 @@ bool piece::IsSidesColliding(std::vector<vector<unsigned char>> landedArray, pos
 void piece::RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix)
 {
 	const size_t height = outBlockMatrix.size();
-    const size_t width = outBlockMatrix[0].size();
+	const size_t width = outBlockMatrix[0].size();
 	size_t newRow = 0;
 	std::vector<std::vector<unsigned char>> tempVec(width, std::vector<unsigned char> (height));
 	for (int oldColumn = width - 1; oldColumn >= 0; oldColumn--)
