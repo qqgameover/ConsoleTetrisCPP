@@ -1,11 +1,10 @@
 #pragma once
 #include <vector>
-using namespace std;
 class board
 {
 public:
-	vector<vector<unsigned char>> BoardArray;
-	vector<vector<unsigned char>> LandedArray;
+    std::vector<std::vector<unsigned char>> BoardArray;
+    std::vector<std::vector<unsigned char>> LandedArray;
 	board();
 	void DrawBoard();
 };
