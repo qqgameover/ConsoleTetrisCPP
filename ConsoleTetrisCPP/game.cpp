@@ -25,7 +25,7 @@ void set_cursor(bool visible) {
 void game::PieceLogic()
 {
 	CurrentPiece.UnDrawBlock(Board);
-	CurrentPiece.MoveBlock(position(1, 0));
+	CurrentPiece.MoveBlock(Controls.HandleInput());
 	bool hasCollided = ColDetection.IsColliding(Board.LandedArray, CurrentPiece, position(1, 0));
 	CurrentPiece.DrawBlock(Board);
 	if (hasCollided)
@@ -37,7 +37,7 @@ void game::PieceLogic()
 
 [[noreturn]]void game::GameplayLoop()
 {
-	set_cursor(false);
+  	set_cursor(false);
 	while (true)
 	{
 		setCursorPosition(0, 0);

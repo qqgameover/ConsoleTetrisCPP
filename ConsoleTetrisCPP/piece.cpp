@@ -32,8 +32,7 @@ void piece::UnDrawBlock(board &gameBoards)
 
 void piece::MoveBlock(position dir)
 {
-	Position->y += dir.y;
-	Position->x += dir.x;
+    this -> Position = new position(Position->y + dir.y, Position->x + dir.x);
 }
 
 vector<vector<unsigned char>> piece::GetRandomBlockMatrix()
