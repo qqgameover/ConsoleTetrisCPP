@@ -11,6 +11,6 @@ public:
 	ColDetection ColDetection;
 	game();
 	void PieceLogic();
-	[noreturn]void GameplayLoop();
+	void GameplayLoop();
 };
 
