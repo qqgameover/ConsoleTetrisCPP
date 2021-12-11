@@ -77,33 +77,29 @@ void piece::RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix)
 vector<vector<unsigned char>> piece::GetRandomBlockMatrix()
 {
 	int num = rand() % 7;
-	if(num == 1)
+	if (num == 1)
 	{
-		return { {2, 2}, 
-                 {2, 2} };
+		return {{2, 2}, {2, 2}};
 	}
-    if(num == 2)
-    {
-        return { {0, 3, 3},
-                 {3, 3, 0}};
-    }
-    if(num == 3)
-    {
-        return {{4, 4, 0}, 
-                {0, 4, 4 }};
-    }
-    if(num == 4)
-    {
-       return {  {0, 0, 0, 0},
-		        {5, 5, 5, 5} };
-    }
-    if(num == 5)
-    {
-        return {{0, 6, 0}, {0, 6, 0}, {0, 6, 6}};
-    }
-    if(num == 6)
-    {
-        return {{0, 7, 0}, {0, 7, 0}, {7, 7, 0}};
-    }
-    return {{0, 8, 0}, {8, 8, 8}};
+	if (num == 2)
+	{
+		return {{0, 3, 3}, {3, 3, 0}};
+	}
+	if (num == 3)
+	{
+		return {{4, 4, 0}, {0, 4, 4}};
+	}
+	if (num == 4)
+	{
+		return {{0, 0, 0, 0}, {5, 5, 5, 5}};
+	}
+	if (num == 5)
+	{
+		return {{0, 6, 0}, {0, 6, 0}, {0, 6, 6}};
+	}
+	if (num == 6)
+	{
+		return {{0, 7, 0}, {0, 7, 0}, {7, 7, 0}};
+	}
+	return {{0, 8, 0}, {8, 8, 8}};
 }
