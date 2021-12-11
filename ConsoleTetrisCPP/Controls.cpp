@@ -3,20 +3,19 @@
 
 position Controls::HandleInput() 
 {
-    if(_kbhit())
+    if(_kbhit()) 
     {
         switch(_getch())
         {
-            case 'A':
-                std::cout << "Hei";
+            case 'w':
                 return {1, 0};
-            case 'B':
+            case 'r':
                 return {1, 0};
-            case 'C':
+            case 's':
                 return {1, 1};
-            case 'D':
+            case 'a':
                 return {1, -1};
-            default: return { 1, 0 };;
+            default: return { 1, 0 };
         }
     }
     return {1, 0};
