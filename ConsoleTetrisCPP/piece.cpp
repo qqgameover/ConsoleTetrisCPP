@@ -49,7 +49,7 @@ bool piece::IsHittingWall(std::vector<vector<unsigned char>> landedArray, positi
         for(size_t xIndex = 0; xIndex < width; xIndex++)
         {
            if(blockMatrix[yIndex][xIndex] == 0) continue;
-           if(landedArray[yIndex + Position->y][xIndex + Position->x + dir.x] > 0) return true;
+           if(landedArray[yIndex + Position->y + dir.y][xIndex + Position->x + dir.x] > 0) return true;
         }
     return false;
 }
