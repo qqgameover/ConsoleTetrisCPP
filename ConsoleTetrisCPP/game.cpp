@@ -32,6 +32,7 @@ void game::PieceLogic()
 	if (hasCollided)
 	{
 		CurrentPiece = piece();
+		Board.CheckForTetris();
 		Board.LandedArray = Board.BoardArray;
 	}
 }
