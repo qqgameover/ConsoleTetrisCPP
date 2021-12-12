@@ -39,7 +39,7 @@ void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> land
 		this -> Position = new position(Position->y + dir.y, Position->x);
 		return;
 	}
-    	this -> Position = new position(Position->y + dir.y, Position->x + dir.x);
+    this -> Position = new position(Position->y + dir.y, Position->x + dir.x);
 }
 
 bool piece::IsSidesColliding(std::vector<vector<unsigned char>> landedArray, position dir) 
@@ -47,11 +47,11 @@ bool piece::IsSidesColliding(std::vector<vector<unsigned char>> landedArray, pos
 	const size_t height = this -> blockMatrix.size();
 	const size_t width = this -> blockMatrix[0].size();
 	for(size_t yIndex = 0; yIndex < height; yIndex++)
-	for(size_t xIndex = 0; xIndex < width; xIndex++)
-	{
-	   if(blockMatrix[yIndex][xIndex] == 0) continue;
-	   if(landedArray[yIndex + Position->y + dir.y][xIndex + Position->x + dir.x] > 0) return true;
-	}
+        for(size_t xIndex = 0; xIndex < width; xIndex++)
+        {
+           if(blockMatrix[yIndex][xIndex] == 0) continue;
+           if(landedArray[yIndex + Position->y + dir.y][xIndex + Position->x + dir.x] > 0) return true;
+        }
 	return false;
 }
 
