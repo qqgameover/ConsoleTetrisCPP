@@ -31,15 +31,15 @@ void board::DrawBoard()
 {
 	size_t height = BoardArray.size();
 	size_t width = BoardArray[0].size();
-	for (size_t yAxsis = 0; yAxsis < height; yAxsis++)
-	for (size_t xAxsis = 0; xAxsis < width; xAxsis++)
+	for (size_t yAxis = 0; yAxis < height; yAxis++)
+	for (size_t xAxis = 0; xAxis < width; xAxis++)
 	{
-		if (BoardArray[yAxsis][xAxsis] == 0) std::cout << "\033[1;36m+\033[0m" << " ";
+		if (BoardArray[yAxis][xAxis] == 0) std::cout << "\033[1;36m+\033[0m" << " ";
 		else
 		{
-			std::cout << "\033[1;" << colorarray[BoardArray[yAxsis][xAxsis] - 1] << 
-				"m" << (int)BoardArray[yAxsis][xAxsis] << "\033[0m" << " ";
+			std::cout << "\033[1;" << colorarray[BoardArray[yAxis][xAxis] - 1] << 
+				"m" << static_cast<int>(BoardArray[yAxis][xAxis]) << "\033[0m" << " ";
 		}
-		if (xAxsis == width - 1) std::cout << "\n";
+		if (xAxis == width - 1) std::cout << "\n";
 	}
 }
