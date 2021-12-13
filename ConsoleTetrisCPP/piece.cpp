@@ -72,8 +72,8 @@ void piece::RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix)
         }
         newRow++;
     }
-    WallKick();
     outBlockMatrix = tempVec;
+    WallKick();
 }
 
 vector<vector<unsigned char>> piece::GetRandomBlockMatrix()
