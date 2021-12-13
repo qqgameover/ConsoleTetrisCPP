@@ -72,6 +72,7 @@ void piece::RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix)
         }
         newRow++;
     }
+    WallKick();
     outBlockMatrix = tempVec;
 }
 
@@ -86,3 +87,25 @@ vector<vector<unsigned char>> piece::GetRandomBlockMatrix()
     if (num == 6) return {{0, 7, 0}, {0, 7, 0}, {7, 7, 0}};
     return {{0, 8, 0}, {8, 8, 8}};
 }
+
+void piece::WallKick()
+{
+    size_t height = blockMatrix.size();
+    size_t width = blockMatrix[0].size();
+    for(size_t yAxis = 0; yAxis < height; yAxis++)
+        for(size_t xAxis = 0; xAxis < width; xAxis++)
+        {
+            if(blockMatrix[yAxis][xAxis] == 0) continue;
+            if(xAxis + Position->x < 1)
+            {
+                Position.reset(new position(Position->y, Position->x + 1));
+                return;
+            }
+            if(xAxis + Position->x > 9)
+            {
+                Position.reset(new position(Position->y, Position->x - 1));
+                return;
+            }
+        }
+}
+
