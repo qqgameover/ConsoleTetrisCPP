@@ -2,6 +2,7 @@
 #include <vector>
 #include "board.h"
 #include "position.h"
+#include <memory>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ class piece
 {
 	static vector<vector<unsigned char>> GetRandomBlockMatrix();
 public:
-	position *Position;
+    std::unique_ptr<position> Position;
 	vector<vector<unsigned char>> blockMatrix;
 	piece();
 	void MoveBlock(position dir, std::vector<std::vector<unsigned char>> landedArray);

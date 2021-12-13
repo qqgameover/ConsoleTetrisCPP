@@ -5,7 +5,7 @@
 #include <vector>
 piece::piece()
 {
-	Position = new position(0, 5);
+	Position = std::make_unique<position>(position(0, 5));
 	blockMatrix = GetRandomBlockMatrix();
 }
 
@@ -36,10 +36,10 @@ void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> land
 {
 	if(IsSidesColliding(std::move(landedArray), dir)) 
 	{
-		this -> Position = new position(Position->y + dir.y, Position->x);
+		Position.reset(new position(Position->y + dir.y, Position->x));
 		return;
 	}
-    this -> Position = new position(Position->y + dir.y, Position->x + dir.x);
+    Position.reset(new position(Position->y + dir.y, Position->x + dir.x));
 }
 
 bool piece::IsSidesColliding(std::vector<vector<unsigned char>> landedArray, position dir) 

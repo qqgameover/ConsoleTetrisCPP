@@ -7,5 +7,6 @@ struct position
 	position();
 	position operator += (position rhs) const;
 	position& operator += (const position *rhs);
+	::position& operator=(position* position);
 };
 
