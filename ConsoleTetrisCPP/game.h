@@ -6,13 +6,13 @@
 #include "Controls.h"
 class game
 {
-public:
-	board Board;
-    Controls Controls;
-	piece CurrentPiece;
-	ColDetection ColDetection;
-	game();
-	void PieceLogic();
-	void GameplayLoop();
+    public:
+        board Board;
+        Controls Controls;
+        piece CurrentPiece;
+        ColDetection ColDetection;
+        game();
+        void PieceLogic();
+        void GameplayLoop();
 };
 
