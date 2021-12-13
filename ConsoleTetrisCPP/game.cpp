@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <iostream>
 #include <thread>
-#define WAITTIME 250ms
+#define WAITTIME 200ms
 
 game::game()
 {

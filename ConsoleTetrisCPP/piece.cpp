@@ -99,12 +99,10 @@ void piece::WallKick()
             if(xAxis + Position->x < 1)
             {
                 Position.reset(new position(Position->y, Position->x + 1));
-                return;
             }
-            if(xAxis + Position->x > 9)
+            if(xAxis + Position->x > 10)
             {
                 Position.reset(new position(Position->y, Position->x - 1));
-                return;
             }
         }
 }
