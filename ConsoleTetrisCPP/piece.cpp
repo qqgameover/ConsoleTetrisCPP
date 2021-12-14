@@ -78,14 +78,14 @@ void piece::RotateBlock(std::vector
         newRow++;
     }
     WallKick(tempVec);
-    bool couldRotate = TestRotation(landedArray, dir, tempVec);
+    const bool couldRotate = TestRotation(landedArray, dir, tempVec);
     if(!couldRotate) return;
     outBlockMatrix = tempVec;
 }
 
 std::vector<std::vector<unsigned char>> piece::GetRandomBlockMatrix()
 {
-    int num = rand() % 7;
+	const int num = rand() % 7;
     if (num == 1) return {{2, 2}, {2, 2}};
     if (num == 2) return {{0, 3, 3}, {3, 3, 0}};
     if (num == 3) return {{4, 4, 0}, {0, 4, 4}};
@@ -95,18 +95,18 @@ std::vector<std::vector<unsigned char>> piece::GetRandomBlockMatrix()
     return {{0, 8, 0}, {8, 8, 8}};
 }
 
-void piece::WallKick(std::vector<std::vector<unsigned char>> tempVec)
+void piece::WallKick(std::vector<std::vector<unsigned char>> &tempVec)
 {
-    std::vector<position> blockSegments = GetBlockSegments(position(Position->y, Position->x), tempVec); 
+	const std::vector<position> blockSegments = GetBlockSegments(position(Position->y, Position->x), tempVec); 
     for (auto& blockSegment : blockSegments)
     {
-        int segmentXPos = blockSegment.x;
+	    const int segmentXPos = blockSegment.x;
         if(segmentXPos < 1) Position.reset(new position(Position->y, Position->x + 1));
         if(segmentXPos > 10) Position.reset(new position(Position->y, Position->x - 1));
     }
 }
 std::vector<position> piece::GetBlockSegments(position currentPos, 
-        std::vector<std::vector<unsigned char>> tempVec)
+        std::vector<std::vector<unsigned char>> &tempVec)
 {
     size_t height = tempVec.size();
     size_t width = tempVec[0].size();
@@ -120,7 +120,7 @@ std::vector<position> piece::GetBlockSegments(position currentPos,
     return blockSegments;
 }
 bool piece::TestRotation(std::vector<std::vector<unsigned char>>& landedArray, position dir, 
-        std::vector<std::vector<unsigned char>> tempVec)
+        std::vector<std::vector<unsigned char>> &tempVec)
 {
     size_t height = tempVec.size();
     size_t width = tempVec[0].size();
