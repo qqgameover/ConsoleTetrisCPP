@@ -62,6 +62,7 @@ bool piece::IsSidesColliding(std::vector
 void piece::RotateBlock(std::vector
         <std::vector<unsigned char>> &outBlockMatrix)
 {
+    std::string test = "Hei";
     const size_t height = outBlockMatrix.size();
     const size_t width = outBlockMatrix[0].size();
     size_t newRow = 0;
@@ -80,7 +81,7 @@ void piece::RotateBlock(std::vector
     WallKick();
 }
 
-vector<vector<unsigned char>> piece::GetRandomBlockMatrix()
+std::vector<std::vector<unsigned char>> piece::GetRandomBlockMatrix()
 {
     int num = rand() % 7;
     if (num == 1) return {{2, 2}, {2, 2}};
