@@ -123,13 +123,13 @@ bool piece::TestRotation(std::vector<std::vector<unsigned char>>& landedArray, p
         std::vector<std::vector<unsigned char>> tempVec)
 {
     size_t height = tempVec.size();
-	size_t width = tempVec[0].size();
-	for (size_t yIndex = 0; yIndex < height; ++yIndex)
+    size_t width = tempVec[0].size();
+    for (size_t yIndex = 0; yIndex < height; ++yIndex)
         for (size_t xIndex = 0; xIndex < width; ++xIndex)
         {
             if (tempVec[yIndex][xIndex] == 0) continue;
             if (landedArray[yIndex + Position->y + dir.y][xIndex + Position->x + dir.x] > 0) return false;
         }
-	return true;
+    return true;
 }
 
