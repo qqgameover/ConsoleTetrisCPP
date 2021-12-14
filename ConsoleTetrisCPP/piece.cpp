@@ -85,7 +85,7 @@ void piece::RotateBlock(std::vector
 
 std::vector<std::vector<unsigned char>> piece::GetRandomBlockMatrix()
 {
-	const int num = rand() % 7;
+    const int num = rand() % 7;
     if (num == 1) return {{2, 2}, {2, 2}};
     if (num == 2) return {{0, 3, 3}, {3, 3, 0}};
     if (num == 3) return {{4, 4, 0}, {0, 4, 4}};
@@ -97,10 +97,10 @@ std::vector<std::vector<unsigned char>> piece::GetRandomBlockMatrix()
 
 void piece::WallKick(std::vector<std::vector<unsigned char>> &tempVec)
 {
-	const std::vector<position> blockSegments = GetBlockSegments(position(Position->y, Position->x), tempVec); 
+    const std::vector<position> blockSegments = GetBlockSegments(position(Position->y, Position->x), tempVec); 
     for (auto& blockSegment : blockSegments)
     {
-	    const int segmentXPos = blockSegment.x;
+        const int segmentXPos = blockSegment.x;
         if(segmentXPos < 1) Position.reset(new position(Position->y, Position->x + 1));
         if(segmentXPos > 10) Position.reset(new position(Position->y, Position->x - 1));
     }
