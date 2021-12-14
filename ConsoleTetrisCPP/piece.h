@@ -19,5 +19,6 @@ class piece
     void WallKick();
     void RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix);
     bool IsSidesColliding(std::vector<std::vector<unsigned char>> landedArray, position dir);
+    bool TestAllRotations();
 };
 

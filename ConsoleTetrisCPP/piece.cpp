@@ -43,7 +43,8 @@ void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> land
     Position.reset(new position(Position->y + dir.y, Position->x + dir.x));
 }
 
-bool piece::IsSidesColliding(std::vector<vector<unsigned char>> landedArray, position dir) 
+bool piece::IsSidesColliding(std::vector
+        <vector<unsigned char>> landedArray, position dir) 
 {
     const size_t height = this -> blockMatrix.size();
     const size_t width = this -> blockMatrix[0].size();
@@ -56,7 +57,8 @@ bool piece::IsSidesColliding(std::vector<vector<unsigned char>> landedArray, pos
     return false;
 }
 
-void piece::RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix)
+void piece::RotateBlock(std::vector
+        <std::vector<unsigned char>> &outBlockMatrix)
 {
     const size_t height = outBlockMatrix.size();
     const size_t width = outBlockMatrix[0].size();
@@ -105,5 +107,9 @@ void piece::WallKick()
                 Position.reset(new position(Position->y, Position->x - 1));
             }
         }
+}
+bool piece::TestAllRotations()
+{
+   return false; 
 }
 

@@ -1,8 +1,8 @@
 #include "position.h"
-position::position(int _y, int _x)
+position::position(int y, int x)
 {
-	y = _y;
-	x = _x;
+	this->y = y;
+	this->x = x;
 }
 position::position()
 {
