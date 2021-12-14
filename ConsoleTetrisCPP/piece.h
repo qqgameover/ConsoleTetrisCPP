@@ -23,4 +23,3 @@ class piece
                 std::vector<std::vector<unsigned char>> &landedArray, position dir);
         bool IsSidesColliding(std::vector<std::vector<unsigned char>> landedArray, position dir);
 };
-
