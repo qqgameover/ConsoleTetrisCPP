@@ -26,7 +26,7 @@ void set_cursor(bool visible) {
 void game::PieceLogic()
 {
 	CurrentPiece.UnDrawBlock(Board);
-    position currentDir = Controls.HandleInput(CurrentPiece);
+    position currentDir = Controls.HandleInput(CurrentPiece, Board.LandedArray);
 	CurrentPiece.MoveBlock(currentDir, Board.LandedArray);
 	bool hasCollided = ColDetection.IsColliding(Board.LandedArray, CurrentPiece, position(1, 0));
 	CurrentPiece.DrawBlock(Board);

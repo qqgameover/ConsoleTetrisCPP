@@ -60,7 +60,7 @@ bool piece::IsSidesColliding(std::vector
 }
 
 void piece::RotateBlock(std::vector
-        <std::vector<unsigned char>> &outBlockMatrix)
+        <std::vector<unsigned char>> &outBlockMatrix, std::vector<std::vector<unsigned char>> &landedArray)
 {
     const size_t height = outBlockMatrix.size();
     const size_t width = outBlockMatrix[0].size();
@@ -76,6 +76,8 @@ void piece::RotateBlock(std::vector
         }
         newRow++;
     }
+    bool couldRotate = TestRotation(landedArray);
+    if(!couldRotate) return;
     outBlockMatrix = tempVec;
     WallKick();
 }
@@ -110,8 +112,18 @@ void piece::WallKick()
             }
         }
 }
-bool piece::TestAllRotations()
+bool piece::TestRotation(std::vector<std::vector<unsigned char>>& landedArray)
 {
-    return false; 
+    const size_t height = blockMatrix.size();
+	const size_t width = blockMatrix[0].size();
+	for (size_t yIndex = 0; yIndex < height; ++yIndex)
+        for (size_t xIndex = 0; xIndex < width; ++xIndex)
+        {
+            if (blockMatrix[yIndex][xIndex] == 0) continue;
+            if (landedArray[yIndex + Position->y][xIndex + Position->x] == 0) continue;
+            return false;
+        }
+	return true;
+
 }
 

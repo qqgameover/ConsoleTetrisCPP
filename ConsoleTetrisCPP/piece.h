@@ -15,8 +15,9 @@ class piece
     void UnDrawBlock(board &gameBoards);
     void DrawBlock(board &gameBoards);
     void WallKick();
-    void RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix);
+    void RotateBlock(std::vector<std::vector<unsigned char>> &outBlockMatrix, std::vector<std::vector<unsigned char>> &landedArray);
     bool IsSidesColliding(std::vector<std::vector<unsigned char>> landedArray, position dir);
-    bool TestAllRotations();
+    bool TestRotation(std::vector<std::vector<unsigned char>> &landedArray);
+    bool TestAllRotations(std::vector<std::vector<unsigned char>> &landedArray);
 };
 

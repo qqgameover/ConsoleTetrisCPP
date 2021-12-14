@@ -1,13 +1,13 @@
 #include "Controls.h"
 
-position Controls::HandleInput(piece &p) 
+position Controls::HandleInput(piece &p, std::vector<std::vector<unsigned char>>& landedArray)
 {
     if(_kbhit()) 
     {
         switch(_getch())
         {
             case 'w':
-                p.RotateBlock(p.blockMatrix);
+                p.RotateBlock(p.blockMatrix, landedArray);
                 return {1, 0};
             case 's':
                 return {1, 0};

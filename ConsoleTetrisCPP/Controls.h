@@ -5,6 +5,6 @@
 class Controls
 {
     public:
-        position HandleInput(piece &p);
+        position HandleInput(piece &p, std::vector<std::vector<unsigned char>>& landedArray);
 };
 
