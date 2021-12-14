@@ -7,7 +7,7 @@ position Controls::HandleInput(piece &p, std::vector<std::vector<unsigned char>>
         switch(_getch())
         {
             case 'w':
-                p.RotateBlock(p.blockMatrix, landedArray);
+                p.RotateBlock(p.blockMatrix, landedArray, position(1, 0));
                 return {1, 0};
             case 's':
                 return {1, 0};

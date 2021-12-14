@@ -60,7 +60,8 @@ bool piece::IsSidesColliding(std::vector
 }
 
 void piece::RotateBlock(std::vector
-        <std::vector<unsigned char>> &outBlockMatrix, std::vector<std::vector<unsigned char>> &landedArray)
+        <std::vector<unsigned char>> &outBlockMatrix, std::vector<std::vector<unsigned char>> &landedArray, 
+        position dir)
 {
     const size_t height = outBlockMatrix.size();
     const size_t width = outBlockMatrix[0].size();
@@ -76,10 +77,10 @@ void piece::RotateBlock(std::vector
         }
         newRow++;
     }
-    bool couldRotate = TestRotation(landedArray);
+    WallKick(tempVec);
+    bool couldRotate = TestRotation(landedArray, dir, tempVec);
     if(!couldRotate) return;
     outBlockMatrix = tempVec;
-    WallKick();
 }
 
 std::vector<std::vector<unsigned char>> piece::GetRandomBlockMatrix()
@@ -88,42 +89,47 @@ std::vector<std::vector<unsigned char>> piece::GetRandomBlockMatrix()
     if (num == 1) return {{2, 2}, {2, 2}};
     if (num == 2) return {{0, 3, 3}, {3, 3, 0}};
     if (num == 3) return {{4, 4, 0}, {0, 4, 4}};
-    if (num == 4) return { {0, 0, 0, 0},{5, 5, 5, 5} };
+    if (num == 4) return { {0, 0, 0, 0},{5, 5, 5, 5}};
     if (num == 5) return {{0, 6, 0}, {0, 6, 0}, {0, 6, 6}};
     if (num == 6) return {{0, 7, 0}, {0, 7, 0}, {7, 7, 0}};
     return {{0, 8, 0}, {8, 8, 8}};
 }
 
-void piece::WallKick()
+void piece::WallKick(std::vector<std::vector<unsigned char>> tempVec)
 {
-    size_t height = blockMatrix.size();
-    size_t width = blockMatrix[0].size();
+    std::vector<position> blockSegments = GetBlockSegments(position(Position->y, Position->x), tempVec); 
+    for (auto& blockSegment : blockSegments)
+    {
+        int segmentXPos = blockSegment.x;
+        if(segmentXPos < 1) Position.reset(new position(Position->y, Position->x + 1));
+        if(segmentXPos > 10) Position.reset(new position(Position->y, Position->x - 1));
+    }
+}
+std::vector<position> piece::GetBlockSegments(position currentPos, 
+        std::vector<std::vector<unsigned char>> tempVec)
+{
+    size_t height = tempVec.size();
+    size_t width = tempVec[0].size();
+    std::vector<position> blockSegments;
     for(size_t yAxis = 0; yAxis < height; yAxis++)
         for(size_t xAxis = 0; xAxis < width; xAxis++)
         {
-            if(blockMatrix[yAxis][xAxis] == 0) continue;
-            if(xAxis + Position->x < 1)
-            {
-                Position.reset(new position(Position->y, Position->x + 1));
-            }
-            if(xAxis + Position->x > 10)
-            {
-                Position.reset(new position(Position->y, Position->x - 1));
-            }
+            if(tempVec[yAxis][xAxis] == 0) continue;
+            blockSegments.push_back(position(currentPos.y + yAxis, currentPos.x + xAxis));
         }
+    return blockSegments;
 }
-bool piece::TestRotation(std::vector<std::vector<unsigned char>>& landedArray)
+bool piece::TestRotation(std::vector<std::vector<unsigned char>>& landedArray, position dir, 
+        std::vector<std::vector<unsigned char>> tempVec)
 {
-    const size_t height = blockMatrix.size();
-	const size_t width = blockMatrix[0].size();
+    size_t height = tempVec.size();
+	size_t width = tempVec[0].size();
 	for (size_t yIndex = 0; yIndex < height; ++yIndex)
         for (size_t xIndex = 0; xIndex < width; ++xIndex)
         {
-            if (blockMatrix[yIndex][xIndex] == 0) continue;
-            if (landedArray[yIndex + Position->y][xIndex + Position->x] == 0) continue;
-            return false;
+            if (tempVec[yIndex][xIndex] == 0) continue;
+            if (landedArray[yIndex + Position->y + dir.y][xIndex + Position->x + dir.x] > 0) return false;
         }
 	return true;
-
 }
 
