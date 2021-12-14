@@ -2,7 +2,8 @@
 #include <Windows.h>
 #include <iostream>
 #include <thread>
-#define WAITTIME 200ms
+#include <chrono>
+#define WAITTIME 200
 
 game::game()
 {
@@ -45,6 +46,6 @@ void game::GameplayLoop()
 		setCursorPosition(0, 0);
 		PieceLogic();
 		Board.DrawBoard();
-		std::this_thread::sleep_for(WAITTIME);
+		std::this_thread::sleep_for(std::chrono::milliseconds(WAITTIME));
 	}
 }
