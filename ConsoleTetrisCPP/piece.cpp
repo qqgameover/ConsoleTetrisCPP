@@ -28,7 +28,8 @@ void piece::UnDrawBlock(board &gameBoards)
     for (size_t yIndex = 0; yIndex < height; yIndex++)
         for (size_t xIndex = 0; xIndex < width; xIndex++)
         {
-            if (gameBoards.LandedArray[yIndex + Position->y][xIndex + Position->x] > 0) continue;
+            if (gameBoards.LandedArray[yIndex + Position->y][xIndex + Position->x] > 0) 
+                continue;
             gameBoards.BoardArray[yIndex + Position->y][xIndex + Position->x] = 0;
         }
 }
@@ -44,7 +45,7 @@ void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> land
 }
 
 bool piece::IsSidesColliding(std::vector
-        <vector<unsigned char>> landedArray, position dir) 
+        <std::vector<unsigned char>> landedArray, position dir) 
 {
     const size_t height = this -> blockMatrix.size();
     const size_t width = this -> blockMatrix[0].size();
@@ -52,7 +53,8 @@ bool piece::IsSidesColliding(std::vector
         for(size_t xIndex = 0; xIndex < width; xIndex++)
         {
             if(blockMatrix[yIndex][xIndex] == 0) continue;
-            if(landedArray[yIndex + Position->y + dir.y][xIndex + Position->x + dir.x] > 0) return true;
+            if(landedArray[yIndex + Position->y + dir.y][xIndex + Position->x + dir.x] > 0) 
+                return true;
         }
     return false;
 }
@@ -110,6 +112,6 @@ void piece::WallKick()
 }
 bool piece::TestAllRotations()
 {
-   return false; 
+    return false; 
 }
 

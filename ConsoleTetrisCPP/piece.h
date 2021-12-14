@@ -4,14 +4,12 @@
 #include "position.h"
 #include <memory>
 
-using namespace std;
-
 class piece
 {
-    static vector<vector<unsigned char>> GetRandomBlockMatrix();
+    static std::vector<std::vector<unsigned char>> GetRandomBlockMatrix();
     public:
     std::unique_ptr<position> Position;
-    vector<vector<unsigned char>> blockMatrix;
+    std::vector<std::vector<unsigned char>> blockMatrix;
     piece();
     void MoveBlock(position dir, std::vector<std::vector<unsigned char>> landedArray);
     void UnDrawBlock(board &gameBoards);
