@@ -21,7 +21,6 @@ void piece::DrawBlock(board &gameBoards)
             gameBoards.BoardArray[yIndex + Position->y][xIndex + Position->x] = blockMatrix[yIndex][xIndex];
         }
 }
-
 void piece::UnDrawBlock(board &gameBoards)
 {
     const size_t height = blockMatrix.size();
@@ -133,4 +132,3 @@ bool piece::TestRotation(std::vector<std::vector<unsigned char>>& landedArray, p
         }
     return true;
 }
-
