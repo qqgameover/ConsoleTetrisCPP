@@ -3,6 +3,7 @@
 #include <random>
 #include <utility>
 #include <vector>
+
 piece::piece()
 {
     Position = std::make_unique<position>(position(0, 5));
