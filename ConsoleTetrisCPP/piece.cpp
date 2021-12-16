@@ -21,6 +21,7 @@ void piece::DrawBlock(board &gameBoards)
             gameBoards.BoardArray[yIndex + Position->y][xIndex + Position->x] = blockMatrix[yIndex][xIndex];
         }
 }
+
 void piece::UnDrawBlock(board &gameBoards)
 {
     const size_t height = blockMatrix.size();
