@@ -106,6 +106,7 @@ void piece::WallKick(std::vector<std::vector<unsigned char>> &tempVec)
         if(segmentXPos > 10) Position.reset(new position(Position->y, Position->x - 1));
     }
 }
+
 std::vector<position> piece::GetBlockSegments(position currentPos, 
         std::vector<std::vector<unsigned char>> &tempVec)
 {
@@ -120,6 +121,7 @@ std::vector<position> piece::GetBlockSegments(position currentPos,
         }
     return blockSegments;
 }
+
 bool piece::TestRotation(std::vector<std::vector<unsigned char>>& landedArray, position dir, 
         std::vector<std::vector<unsigned char>> &tempVec)
 {
