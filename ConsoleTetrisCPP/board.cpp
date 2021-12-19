@@ -26,6 +26,7 @@ board::board()
 			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 	copy(BoardArray.begin(), BoardArray.end(), back_inserter(LandedArray));
+    Points = 0;
 }
 void board::DrawBoard()
 {
