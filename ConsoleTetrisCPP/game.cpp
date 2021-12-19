@@ -41,11 +41,14 @@ void game::PieceLogic()
 void game::GameplayLoop()
 {
   	set_cursor(false);
+    system("cls");
 	while (true)
 	{
 		setCursorPosition(0, 0);
 		PieceLogic();
 		Board.DrawBoard();
-		std::this_thread::sleep_for(std::chrono::milliseconds(WAITTIME));
-	}
+        Sleep(WAITTIME);
+    }       //std::this_thread::sleep_for(std::chrono::milliseconds(WAITTIME));
+    
 }
+
