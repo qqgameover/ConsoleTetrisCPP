@@ -63,5 +63,6 @@ void board::CheckForTetris()
         BoardArray.insert(BoardArray.begin() + 1, std::vector<unsigned char> {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1});
         linesCleared++;
     }
-    Points += linesCleared;
+    if(linesCleared == 0) return;
+    Points += PointArray[linesCleared - 1];
 }
