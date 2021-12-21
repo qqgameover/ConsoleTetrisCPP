@@ -48,7 +48,7 @@ void game::GameplayLoop()
 		PieceLogic();
 		Board.DrawBoard();
         Sleep(WAITTIME);
-    }       //std::this_thread::sleep_for(std::chrono::milliseconds(WAITTIME));
+    }
     
 }
 

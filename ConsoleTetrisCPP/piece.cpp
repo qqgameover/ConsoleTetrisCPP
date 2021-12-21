@@ -48,8 +48,8 @@ void piece::MoveBlock(position dir, std::vector<std::vector<unsigned char>> land
 bool piece::IsSidesColliding(std::vector
         <std::vector<unsigned char>> landedArray, position dir) 
 {
-    const size_t height = this -> blockMatrix.size();
-    const size_t width = this -> blockMatrix[0].size();
+    const size_t height = blockMatrix.size();
+    const size_t width = blockMatrix[0].size();
     for(size_t yIndex = 0; yIndex < height; yIndex++)
         for(size_t xIndex = 0; xIndex < width; xIndex++)
         {
