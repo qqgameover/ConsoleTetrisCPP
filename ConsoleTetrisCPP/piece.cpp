@@ -104,6 +104,7 @@ void piece::WallKick(std::vector<std::vector<unsigned char>> &tempVec)
         const int segmentXPos = blockSegment.x;
         if(segmentXPos < 1) Position.reset(new position(Position->y, Position->x + 1));
         if(segmentXPos > 10) Position.reset(new position(Position->y, Position->x - 1));
+
     }
 }
 
