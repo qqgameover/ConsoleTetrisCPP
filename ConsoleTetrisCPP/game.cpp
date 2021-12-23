@@ -49,6 +49,4 @@ void game::GameplayLoop()
 		Board.DrawBoard();
         Sleep(WAITTIME);
     }
-    
 }
-
