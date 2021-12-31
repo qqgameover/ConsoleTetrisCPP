@@ -13,10 +13,11 @@ game::game()
 void setCursorPosition(int x, int y)
 {
 	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD coord = { (SHORT)x, (SHORT)y };
+	COORD coord = {(SHORT)x, (SHORT)y};
 	SetConsoleCursorPosition(hOut, coord);
 }
-void set_cursor(bool visible) {
+void set_cursor(bool visible)
+{
 	CONSOLE_CURSOR_INFO info;
 	info.dwSize = 100;
 	info.bVisible = visible;
@@ -26,7 +27,7 @@ void set_cursor(bool visible) {
 void game::PieceLogic()
 {
 	CurrentPiece.UnDrawBlock(Board);
-    position currentDir = Controls.HandleInput(CurrentPiece, Board.LandedArray);
+	position currentDir = Controls.HandleInput(CurrentPiece, Board.LandedArray);
 	CurrentPiece.MoveBlock(currentDir, Board.LandedArray);
 	bool hasCollided = ColDetection.IsColliding(Board.LandedArray, CurrentPiece, position(1, 0));
 	CurrentPiece.DrawBlock(Board);
@@ -40,13 +41,13 @@ void game::PieceLogic()
 
 void game::GameplayLoop()
 {
-  	set_cursor(false);
-    system("cls");
+	set_cursor(false);
+	system("cls");
 	while (true)
 	{
 		setCursorPosition(0, 0);
 		PieceLogic();
 		Board.DrawBoard();
-        Sleep(WAITTIME);
-    }
+		Sleep(WAITTIME);
+	}
 }
